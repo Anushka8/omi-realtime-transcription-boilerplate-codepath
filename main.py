@@ -15,7 +15,6 @@ app.add_middleware(
 
 @app.post("/webhook")
 def webhook(uid: str, transcript: dict):
-    print(transcript)
 
     # Hint: The transcript contains segments with text data
     # Hint: Access the latest segment with transcript["segments"][-1]["text"]
@@ -25,6 +24,9 @@ def webhook(uid: str, transcript: dict):
     # example: if the word "tired" is mentioned, return a message notifying the user to take a break
 
     # TODO: Write your code below this line
+    for segment in transcript["segments"]:
+        if "cheese" in segment["text"].lower():
+            return {"message": "NOOOOO"}
 
 
 if __name__ == "__main__":
